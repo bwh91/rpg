@@ -522,6 +522,7 @@ tile_data = PoolIntArray( -327688, 0, 0, -327687, 0, 1, -327686, 0, 1, -327685, 
 tile_set = SubResource( 51 )
 cell_size = Vector2( 32, 32 )
 format = 1
+tile_data = PoolIntArray( 9, 0, 196608, 10, 0, 196610, 131071, 0, 196608, 65536, 0, 196609, 65537, 0, 196610, 131074, 0, 196611, 196615, 0, 196611, 196617, 0, 196608, 196618, 0, 196610 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -556,14 +557,8 @@ position = Vector2( 208, 123.392 )
 [node name="Grass" parent="YSort/Grass" instance=ExtResource( 6 )]
 position = Vector2( 16, 112 )
 
-[node name="Grass2" parent="YSort/Grass" instance=ExtResource( 6 )]
-position = Vector2( -8, 112 )
-
 [node name="Grass3" parent="YSort/Grass" instance=ExtResource( 6 )]
 position = Vector2( 16, 128 )
-
-[node name="Grass4" parent="YSort/Grass" instance=ExtResource( 6 )]
-position = Vector2( -8, 128 )
 
 [node name="Grass5" parent="YSort/Grass" instance=ExtResource( 6 )]
 position = Vector2( 16, 144 )
