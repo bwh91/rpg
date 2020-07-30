@@ -508,7 +508,7 @@ __meta__ = {
 position = Vector2( 160, 90 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 320, 180 )
+region_rect = Rect2( 0, 0, 996, 543 )
 
 [node name="DirtPathTileMap" type="TileMap" parent="."]
 position = Vector2( 160, 90 )
@@ -521,7 +521,6 @@ tile_data = PoolIntArray( -327688, 0, 0, -327687, 0, 1, -327686, 0, 1, -327685, 
 tile_set = SubResource( 51 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -65535, 0, 0, -65534, 0, 1, -65533, 0, 1, -65532, 0, 2, 1, 0, 131072, 2, 0, 131073, 3, 0, 131073, 4, 0, 131074, 131071, 0, 196608, 65536, 0, 196610, 131074, 0, 196608, 131075, 0, 6, 131076, 0, 2, 196611, 0, 131072, 196612, 0, 131074, 196615, 0, 196611, 196617, 0, 196611, 327679, 0, 196608, 262144, 0, 196610 )
 
 [node name="YSort" type="YSort" parent="."]
 

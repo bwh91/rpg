@@ -32,7 +32,11 @@ func _physics_process(delta):
 
 # Function to handle attack state
 func attack_state(delta):
-	pass
+	velocity = Vector2.ZERO
+	animationState.travel("Attack")
+
+func attack_animation_finished():
+	state = MOVE
 
 
 # Function to handle move state
@@ -45,10 +49,14 @@ func move_state(delta):
 	if input_vector != Vector2.ZERO:
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Run/blend_position", input_vector)
+		animationTree.set("parameters/Attack/blend_position", input_vector)
 		animationState.travel("Run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
 		animationState.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
-	velocity = move_and_slide(velocity)	
+	velocity = move_and_slide(velocity)
+	
+	if Input.is_action_just_pressed("attack"):
+		state = ATTACK
