@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://World/GrassBackground.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,12 @@
 [ext_resource path="res://World/CliffTileset.png" type="Texture" id=5]
 [ext_resource path="res://World/Grass.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=7]
+[ext_resource path="res://small-flower.png" type="Texture" id=8]
+[ext_resource path="res://signpost.png" type="Texture" id=9]
+[ext_resource path="res://Enemies/Chicken.tscn" type="PackedScene" id=10]
+[ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=11]
+[ext_resource path="res://World/Tree.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Music and Sounds/Caketown 1.wav" type="AudioStream" id=13]
 
 [sub_resource type="TileSet" id=1]
 resource_local_to_scene = true
@@ -535,13 +541,15 @@ tile_data = PoolIntArray( 7, 0, 196608, 8, 0, 196609, 9, 0, 196609, 10, 0, 19661
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 88, 88 )
 
+[node name="Camera2D" type="Camera2D" parent="YSort/Player"]
+position = Vector2( 70.6393, 3.57166 )
+current = true
+smoothing_enabled = true
+
 [node name="Bushes" type="YSort" parent="YSort"]
 
 [node name="Bush" parent="YSort/Bushes" instance=ExtResource( 7 )]
 position = Vector2( 248, 64 )
-
-[node name="Bush2" parent="YSort/Bushes" instance=ExtResource( 7 )]
-position = Vector2( 16, 24 )
 
 [node name="Bush3" parent="YSort/Bushes" instance=ExtResource( 7 )]
 position = Vector2( 16, 128 )
@@ -554,6 +562,34 @@ position = Vector2( 16, 160 )
 
 [node name="Bush6" parent="YSort/Bushes" instance=ExtResource( 7 )]
 position = Vector2( 48, 128 )
+
+[node name="small-flower6" type="Sprite" parent="YSort/Bushes"]
+position = Vector2( 312, 48 )
+texture = ExtResource( 8 )
+
+[node name="small-flower5" type="Sprite" parent="YSort/Bushes"]
+position = Vector2( 304, 48 )
+texture = ExtResource( 8 )
+
+[node name="small-flower4" type="Sprite" parent="YSort/Bushes"]
+position = Vector2( 296, 48 )
+texture = ExtResource( 8 )
+
+[node name="small-flower3" type="Sprite" parent="YSort/Bushes"]
+position = Vector2( 312, 64 )
+texture = ExtResource( 8 )
+
+[node name="small-flower2" type="Sprite" parent="YSort/Bushes"]
+position = Vector2( 296, 64 )
+texture = ExtResource( 8 )
+
+[node name="small-flower" type="Sprite" parent="YSort/Bushes"]
+position = Vector2( 304, 64 )
+texture = ExtResource( 8 )
+
+[node name="signpost" type="Sprite" parent="YSort/Bushes"]
+position = Vector2( 280, 64 )
+texture = ExtResource( 9 )
 
 [node name="Grass" type="YSort" parent="YSort"]
 
@@ -611,14 +647,43 @@ position = Vector2( 136, 88 )
 [node name="Grass18" parent="YSort/Grass" instance=ExtResource( 6 )]
 position = Vector2( 160, 88 )
 
-[node name="Bat" parent="YSort" instance=ExtResource( 3 )]
+[node name="animals" type="YSort" parent="YSort"]
+
+[node name="Bat" parent="YSort/animals" instance=ExtResource( 3 )]
 position = Vector2( 24, 96 )
 
-[node name="Bat2" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 296, 96 )
+[node name="Bat2" parent="YSort/animals" instance=ExtResource( 3 )]
+position = Vector2( 265.839, 96.7937 )
 
-[node name="Bat3" parent="YSort" instance=ExtResource( 3 )]
+[node name="Bat3" parent="YSort/animals" instance=ExtResource( 3 )]
 position = Vector2( 120, 160 )
 
-[node name="Bat4" parent="YSort" instance=ExtResource( 3 )]
+[node name="Bat4" parent="YSort/animals" instance=ExtResource( 3 )]
 position = Vector2( 208, 48 )
+
+[node name="Chicken" parent="YSort/animals" instance=ExtResource( 10 )]
+position = Vector2( 208, 152 )
+
+[node name="Chicken2" parent="YSort/animals" instance=ExtResource( 10 )]
+position = Vector2( 120, 40 )
+
+[node name="Trees" type="YSort" parent="YSort"]
+
+[node name="Tree" parent="YSort/Trees" instance=ExtResource( 12 )]
+position = Vector2( 160, 184 )
+
+[node name="Tree2" parent="YSort/Trees" instance=ExtResource( 12 )]
+position = Vector2( 299.03, 116.365 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 13 )
+volume_db = -19.96
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 11 )]
+margin_left = 6.3496
+margin_top = 5.5559
+margin_right = 70.3496
+margin_bottom = 21.5559

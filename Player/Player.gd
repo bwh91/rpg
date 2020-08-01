@@ -23,6 +23,7 @@ onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $HitboxPivot/SwordHitBox
 onready var hurtbox = $Hurtbox
+onready var soundAttack = $SoundAttack
 
 func _ready():
 	stats.connect("no_health", self, "queue_free")
@@ -91,6 +92,7 @@ func move_state(delta):
 		state = ROLL
 	
 	if Input.is_action_just_pressed("attack"):
+		soundAttack.play()
 		state = ATTACK
 
 
