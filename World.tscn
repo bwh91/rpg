@@ -1,10 +1,10 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=72 format=2]
 
-[ext_resource path="res://World/GrassBackground.png" type="Texture" id=1]
+[ext_resource path="res://World/images/GrassBackground.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=3]
-[ext_resource path="res://World/DirtTileset.png" type="Texture" id=4]
-[ext_resource path="res://World/CliffTileset.png" type="Texture" id=5]
+[ext_resource path="res://World/images/DirtTileset.png" type="Texture" id=4]
+[ext_resource path="res://World/images/CliffTileset.png" type="Texture" id=5]
 [ext_resource path="res://World/Grass.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=7]
 [ext_resource path="res://small-flower.png" type="Texture" id=8]
@@ -15,6 +15,11 @@
 [ext_resource path="res://Music and Sounds/Caketown 1.wav" type="AudioStream" id=13]
 [ext_resource path="res://World.gd" type="Script" id=14]
 [ext_resource path="res://Camera2D.tscn" type="PackedScene" id=15]
+[ext_resource path="res://World/LargeWoodenHouse.tscn" type="PackedScene" id=16]
+[ext_resource path="res://World/Cactus.tscn" type="PackedScene" id=17]
+[ext_resource path="res://World/CherryTree.tscn" type="PackedScene" id=18]
+[ext_resource path="res://World/Stump.tscn" type="PackedScene" id=19]
+[ext_resource path="res://World/PalmTree.tscn" type="PackedScene" id=20]
 
 [sub_resource type="TileSet" id=1]
 resource_local_to_scene = true
@@ -522,9 +527,6 @@ offset = Vector2( 160, -29.625 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 996, 612.643 )
 
-[node name="Bush" parent="Background" instance=ExtResource( 7 )]
-position = Vector2( 104, 56 )
-
 [node name="DirtPathTileMap" type="TileMap" parent="."]
 position = Vector2( 163, 90 )
 tile_set = SubResource( 1 )
@@ -541,6 +543,12 @@ tile_data = PoolIntArray( 7, 0, 196608, 8, 0, 196609, 9, 0, 196609, 10, 0, 19661
 
 [node name="Camera2D" parent="." instance=ExtResource( 15 )]
 position = Vector2( 163.402, 90.3811 )
+
+[node name="TopLeft" parent="Camera2D/Limits" index="0"]
+position = Vector2( -366.327, -260.744 )
+
+[node name="BottomRight" parent="Camera2D/Limits" index="1"]
+position = Vector2( 621.436, 344.945 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -594,6 +602,9 @@ texture = ExtResource( 8 )
 [node name="signpost" type="Sprite" parent="YSort/Bushes"]
 position = Vector2( 280, 64 )
 texture = ExtResource( 9 )
+
+[node name="Bush2" parent="YSort/Bushes" instance=ExtResource( 7 )]
+position = Vector2( 72.063, 128 )
 
 [node name="Grass" type="YSort" parent="YSort"]
 
@@ -667,6 +678,26 @@ position = Vector2( 160, 184 )
 [node name="Tree2" parent="YSort/Trees" instance=ExtResource( 12 )]
 position = Vector2( 299.03, 116.365 )
 
+[node name="CherryTree" parent="YSort/Trees" instance=ExtResource( 18 )]
+position = Vector2( 101.278, -82.3827 )
+
+[node name="Cactus" parent="YSort/Trees" instance=ExtResource( 17 )]
+position = Vector2( -75.7174, -78.4142 )
+
+[node name="PalmTree" parent="YSort/Trees" instance=ExtResource( 20 )]
+position = Vector2( -171.358, -92.7008 )
+
+[node name="Stump" parent="YSort/Trees" instance=ExtResource( 19 )]
+position = Vector2( -159.056, -16.5055 )
+
+[node name="Tree3" parent="YSort/Trees" instance=ExtResource( 12 )]
+position = Vector2( -263.825, -45.4756 )
+
+[node name="Structures" type="YSort" parent="YSort"]
+
+[node name="LargeWoodenHouse" parent="YSort/Structures" instance=ExtResource( 16 )]
+position = Vector2( 270.563, -69.6802 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 11 )]
@@ -678,3 +709,5 @@ margin_bottom = 21.5559
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 autoplay = true
+
+[editable path="Camera2D"]

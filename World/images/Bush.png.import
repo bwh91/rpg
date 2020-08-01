@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/DirtTileset.png-4e52e2a032d2a3147ded644a2054b3ec.stex"
+path="res://.import/Bush.png-9d2764c1a33bde9a8a95ae93891c92c3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/DirtTileset.png"
-dest_files=[ "res://.import/DirtTileset.png-4e52e2a032d2a3147ded644a2054b3ec.stex" ]
+source_file="res://World/images/Bush.png"
+dest_files=[ "res://.import/Bush.png-9d2764c1a33bde9a8a95ae93891c92c3.stex" ]
 
 [params]
 
