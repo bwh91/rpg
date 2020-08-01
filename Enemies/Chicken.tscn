@@ -29,7 +29,7 @@ animations = [ {
 radius = 4.41001
 
 [node name="Chicken" type="KinematicBody2D"]
-collision_layer = 16
+collision_layer = 2147483664
 collision_mask = 2147483649
 script = ExtResource( 3 )
 
@@ -41,6 +41,7 @@ shape = SubResource( 5 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 17 )
 animation = "Animate"
+frame = 1
 playing = true
 
 [node name="Hurtbox" parent="." instance=ExtResource( 2 )]

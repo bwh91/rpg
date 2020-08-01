@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://World/GrassBackground.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=11]
 [ext_resource path="res://World/Tree.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Music and Sounds/Caketown 1.wav" type="AudioStream" id=13]
+[ext_resource path="res://World.gd" type="Script" id=14]
+[ext_resource path="res://Camera2D.tscn" type="PackedScene" id=15]
 
 [sub_resource type="TileSet" id=1]
 resource_local_to_scene = true
@@ -508,16 +510,17 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 0/z_index = 0
 
 [node name="World" type="Node2D"]
+script = ExtResource( 14 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( -24, 72 )
+position = Vector2( -31.937, 72 )
 texture = ExtResource( 1 )
 offset = Vector2( 160, -29.625 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 996, 543 )
+region_rect = Rect2( 0, 0, 996, 612.643 )
 
 [node name="Bush" parent="Background" instance=ExtResource( 7 )]
 position = Vector2( 104, 56 )
@@ -534,17 +537,18 @@ tile_set = SubResource( 51 )
 cell_size = Vector2( 32, 32 )
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 7, 0, 196608, 8, 0, 196609, 9, 0, 196609, 10, 0, 196610, 131076, 0, 0, 131077, 0, 2, 196612, 0, 131072, 196613, 0, 131074, 262152, 0, 0, 262153, 0, 1, 262154, 0, 2, 327681, 0, 196608, 327682, 0, 196610, 327688, 0, 131072, 327689, 0, 131073, 327690, 0, 131074 )
+tile_data = PoolIntArray( 7, 0, 196608, 8, 0, 196609, 9, 0, 196609, 10, 0, 196610, 262152, 0, 0, 262153, 0, 1, 262154, 0, 2, 327681, 0, 196608, 327682, 0, 196610, 327688, 0, 131072, 327689, 0, 131073, 327690, 0, 131074 )
+
+[node name="Camera2D" parent="." instance=ExtResource( 15 )]
+position = Vector2( 163.402, 90.3811 )
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 88, 88 )
+position = Vector2( 163.402, 90.3811 )
 
-[node name="Camera2D" type="Camera2D" parent="YSort/Player"]
-position = Vector2( 70.6393, 3.57166 )
-current = true
-smoothing_enabled = true
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
+remote_path = NodePath("../../../Camera2D")
 
 [node name="Bushes" type="YSort" parent="YSort"]
 
@@ -635,18 +639,6 @@ position = Vector2( 232, 136 )
 [node name="Grass14" parent="YSort/Grass" instance=ExtResource( 6 )]
 position = Vector2( 232, 160 )
 
-[node name="Grass15" parent="YSort/Grass" instance=ExtResource( 6 )]
-position = Vector2( 136, 72 )
-
-[node name="Grass16" parent="YSort/Grass" instance=ExtResource( 6 )]
-position = Vector2( 160, 72 )
-
-[node name="Grass17" parent="YSort/Grass" instance=ExtResource( 6 )]
-position = Vector2( 136, 88 )
-
-[node name="Grass18" parent="YSort/Grass" instance=ExtResource( 6 )]
-position = Vector2( 160, 88 )
-
 [node name="animals" type="YSort" parent="YSort"]
 
 [node name="Bat" parent="YSort/animals" instance=ExtResource( 3 )]
@@ -675,11 +667,6 @@ position = Vector2( 160, 184 )
 [node name="Tree2" parent="YSort/Trees" instance=ExtResource( 12 )]
 position = Vector2( 299.03, 116.365 )
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 13 )
-volume_db = -19.96
-autoplay = true
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 11 )]
@@ -687,3 +674,7 @@ margin_left = 6.3496
 margin_top = 5.5559
 margin_right = 70.3496
 margin_bottom = 21.5559
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+autoplay = true
